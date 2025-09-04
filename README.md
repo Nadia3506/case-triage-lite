@@ -1,36 +1,79 @@
-# Case Triage Lite 🚀
+Project Summary: Case Triage Lite
 
-## 📌 Project Summary
-This project showcases my Salesforce Developer skills by implementing a **Case Triage and Assignment System**.  
-It demonstrates how to combine **Flows**, **Apex**, and **Queues** to handle real-world Service Cloud scenarios.  
+Case Triage Lite is a lightweight Service Console enhancement for Salesforce Service Cloud. It improves case visibility, assignment, and monitoring using a mix of Flows, Apex, Dashboards, and LWC.
 
-### Key Features:
-- **Custom Fields & Objects**
-  - `Region__c`, `Triage_Status__c`, `SLA_Minutes__c`, and `Case_Score__c` on `Case`
-  - `Triage_Log__c` custom object to track assignments  
+🚀 Features
 
-- **Flows**
-  - **Before-Save Flow** → Ensures cases without an owner default to the *Support – Tier 1* queue  
-  - **After-Save Flow** → Calls Apex to assign cases round-robin to available agents and logs assignments  
+Automated Case Assignment
 
-- **Apex**
-  - `CaseAssignmentService` class handles round-robin assignment logic  
-  - Includes **unit tests** and a **smoke test** to guarantee >75% code coverage and deploy-readiness  
+After-Save Flow integrated with the CaseAssignmentService Apex class.
 
-### Why This Project?
-- Simulates a **real customer support scenario** (case routing + SLA tracking).  
-- Shows my skills in:
-  - Declarative automation (Flow)  
-  - Programmatic development (Apex)  
-  - Testing strategies (unit vs. smoke tests)  
-  - Git & version control  
+Round-robin assignment to queues or agents.
 
----
+Supports Smoke Tests and full Apex Test Classes for deploy-ready coverage.
 
-## 🛠️ Tech Stack
-- Salesforce Developer Org
-- Apex
-- Flows (Before-Save & After-Save)
-- GitHub for version control
-- VS Code + Salesforce CLI
+Service Level Agreement (SLA) Tracking
 
+Custom field SLA_Minutes__c with formula mapping (High/Medium/Low → minutes).
+
+Custom Metadata Type (CMDT) SLA_Policy__mdt for configurable SLA thresholds.
+
+Reports to highlight SLA breaches (SLA_Minutes__c > threshold).
+
+Reports & Dashboards
+
+SLA Breach Cases report.
+
+Case Assignment per Agent report.
+
+Case Volume by Region report.
+
+Case Triage Monitoring Dashboard with real-time charts.
+
+Dashboard embedded directly on the Home Page.
+
+Custom Home Page (FlexiPage)
+
+Built with Lightning App Builder.
+
+Includes:
+
+My Case Triage Console (Custom LWC) – unified view of all cases assigned to the logged-in user.
+
+Unassigned Cases – quick reassignment of incoming cases.
+
+My Open Cases – visibility into the agent’s own workload.
+
+Dashboards – live visualizations for SLA, assignment load, and triage status.
+
+Custom LWC: CaseTriageConsole
+
+Fetches cases via Apex controller (CaseTriageController).
+
+Displays cases in a data table with Subject, Priority, Status, and Triage status.
+
+Enables inline tracking and faster agent triage actions.
+
+🛠 Tech Stack
+
+Apex (CaseAssignmentService, CaseTriageController, Test Classes).
+
+Flows (Before-Save & After-Save automation).
+
+Lightning Web Components (LWC) (CaseTriageConsole).
+
+Reports & Dashboards (SLA tracking, assignment distribution, triage monitoring).
+
+FlexiPages (custom Home Page layout).
+
+Custom Metadata Types (CMDT) (SLA policy configuration).
+
+🎯 Business Value
+
+Faster case assignment and SLA compliance.
+
+Unified console for agents to triage and resolve cases quickly.
+
+Real-time visibility for managers with dashboards.
+
+Deploy-ready (Apex test coverage > 75%, metadata committed to GitHub).
